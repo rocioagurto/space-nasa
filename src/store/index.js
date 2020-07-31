@@ -17,21 +17,28 @@ const KEY ='vJhYsnw8XKcF5hZMSXJMxdUG1T4VwJYy2KVmVeV1'
 
 export default new Vuex.Store({
   state: {
+    loading: false,
     currentUser: getFromStorage('user') || undefined,
-    apod: {},
-    roverData: {}
+    apod: [],
+    roverData: {
+      photos: []
+    }
   },
   mutations: {
+    LOADING_ON(state){state.loading = true},
+    LOADING_OFF(state){state.loading = false},
     UPDATE_CURRENTUSER(state, user) {state.currentUser = user, setInStorage('user', user)},
     GET_APOD(state, apod){state.apod = apod},
     GET_ROVER(state, info){state.roverData = info}
   },
   actions: {
     getApod({commit}, date = null){
+      commit('LOADING_ON')
       let queryDate = date ? date : new Date().toISOString().substr(0, 10)
       axios.get(`${APOD_ENDPOINT}&date=${queryDate}`)
       .then((response) => {
         commit('GET_APOD', response.data)
+        commit('LOADING_OFF')
     })
     .catch(()=>{
       let backup = {url: 'https://apod.nasa.gov/apod/image/2007/NEOWISEBelowBigDipper-7-16-2020-TomMasterson1081.jpg'}
@@ -55,6 +62,11 @@ export default new Vuex.Store({
     
   },
   getters: {
+    cameras(state){
+      return state.roverData.photos.map((photo)=>{
+        return photo.camera.name
+      })
+    },
     isLoggedIn: state => !!state.currentUser,
     currentUser: state => state.currentUser,
   }

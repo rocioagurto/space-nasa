@@ -2,12 +2,22 @@
 
    
     <v-container class="text-center " >
-      <v-card width="320"  class=" mx-auto" color="indigo darken-4"  v-model="alert.snackbar"  >
+      <v-snackbar  class="text-center mt-6" color="indigo darken-4 "  v-model="alert.snackbar" top vertical >
         {{ alert.message }}
-   </v-card>
-   <v-row class=" row container mx-auto">
-   <v-col >
-       <v-card  class="rounded mx-auto card" color="transparent">
+         <template v-slot:action="{ attrs }">
+      <v-btn
+        dark
+        text
+        v-bind="attrs"
+        @click="alert.snackbar = false"
+        >
+        Cerrar
+      </v-btn>
+    </template>
+   </v-snackbar>
+   <v-row class=" row container mx-auto justify-center">
+   <v-col cols="12"  md="6" lg="3">
+       <v-card  class="rounded mx-auto card pa-10">
            <h1 class="text-center mb-5" style="font-size: 40px">APP-NASA</h1>
 
     <v-form
@@ -37,6 +47,7 @@
       
     <v-container class=" mt-6" >
       <v-btn
+      rounded
       color="indigo darken-4"
         :disabled="!valid"
         class=" boton  mb-3  "
@@ -108,14 +119,21 @@ export default {
         })
         .catch(() => {
           this.alert.snackbar = true
-          this.alert.message = 'Usuario no autenticado, intente nuevamente'
+          this.alert.message = 'Usuario no autenticado, intente nuevamente...'
           setTimeout(() => {
             this.alert.message = ''
             this.input.email= ''
              this.input.password= ''
           }, 2000)
-          
-        })
+        }) 
+      } else {
+        this.alert.snackbar = true
+        this.alert.message = 'Debe completar todos los campos...'
+        setTimeout(() => {
+             this.alert.snackbar = false
+          }, 1000)
+        
+
       }
     }
   },
@@ -130,6 +148,10 @@ export default {
 .form {
   margin: 0 auto;
   border: none;
+}
+.card{
+  background: rgba(0, 0, 0, 0.739);
+  border-radius: 40rem;
 }
 .v-sheet.v-card:not(.v-sheet--outlined) {
   box-shadow:none;

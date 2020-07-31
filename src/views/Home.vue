@@ -1,44 +1,24 @@
 <template>
   <div class="text-center " >
-    
     <v-img :src="apod.url" min-height=100vh >
       
-    <v-dialog
-      v-model="dialog" persistent max-width="400px"
-    >
-    <template v-slot:activator="{ on, attrs }"  >
-      <v-btn
-        color="indigo darken-2"
-        v-bind="attrs"
-        v-on="on"
-        class="btn1 pa-6"
-        v-if="boton = true"
-        @click="ingresar()"
-
        
-      >
-      Haz click aquí
-        </v-btn>
-      </template>
-      
-        <v-actions class="text-center" >
-        
           <v-btn
-            color="indigo darken-2"
-            text
-            @click="dialog = false"
-             class="mt-4 ml-3"
+     
+            id="btn1"
+            @click="expand = !expand"
+             class=" ml-3 pa-6"
+             rounded
+            
+             
           >
-          <v-icon>
-            mdi-close-circle
-          </v-icon>
-          
+         <h3>Haz click aquí </h3> 
           </v-btn>
-           
-        </v-actions>
-        <Form/>
+  
+         <v-expand-transition>
+        <Form v-show="expand"/>
+        </v-expand-transition>
    
-    </v-dialog>
         </v-img>
   </div>
 </template>
@@ -46,21 +26,14 @@
 
 
 <script>
-  export default {
-    data: () => ({
-      dialog: false,
-      boton: true
-     
-    }),
-  }
-</script>
-<script>
+
 
 import {mapActions, mapState} from 'vuex'
 import Form from '../components/Form'
 export default {
   data () {
       return {
+         expand: false,
         dialog: false,
       }
     },
@@ -72,9 +45,7 @@ export default {
   },
   methods: {
   ...mapActions(['getApod']),
-  ingresar(){
-    this.boton = false
-  }
+ 
   },
   created(){
     this.getApod()
@@ -84,14 +55,20 @@ export default {
 </script>
 
 <style >
-.btn1{
-  margin-top: 20rem;
+#btn1{
+  margin: 0 auto;
+  margin-top: 10rem;
+  background: rgb(0, 36, 156);
 }
-.v-dialog {
- background: #000;
- width: 100%;
- border-radius: 20px;
+#btn1:hover{
+  height: 4%;
+  transition: .8s;
+  transition-duration: .5s;
+  background: rgb(0, 0, 0);
 }
+
+
+
 
 
 

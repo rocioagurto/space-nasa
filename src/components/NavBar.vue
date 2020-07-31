@@ -4,7 +4,7 @@
       color="transparent"
       light
     >
-      <router-link to="/apod" class="text-decoration-none grey--text text--darken-3"> <v-toolbar-title id="title"  class="white--text">  {{ brand }}</v-toolbar-title></router-link>
+      <router-link to="/apod" class="text-decoration-none grey--text text--darken-3 pa-5" > <v-toolbar-title id="title"  class="white--text">  <h3 class="d-inline-flex"> 🌌 </h3> {{ brand }}</v-toolbar-title></router-link>
       <v-spacer></v-spacer>
       <v-menu
         left
