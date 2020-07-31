@@ -11,12 +11,13 @@
         color="indigo darken-2"
         v-bind="attrs"
         v-on="on"
-        class="btn1 pa-10"
-        
+        class="btn1 pa-6"
+        v-if="boton = true"
+        @click="ingresar()"
 
        
       >
-      Para ingresar, haz click aquí
+      Haz click aquí
         </v-btn>
       </template>
       
@@ -48,6 +49,7 @@
   export default {
     data: () => ({
       dialog: false,
+      boton: true
      
     }),
   }
@@ -69,7 +71,10 @@ export default {
   ...mapState(['apod'])
   },
   methods: {
-  ...mapActions(['getApod'])
+  ...mapActions(['getApod']),
+  ingresar(){
+    this.boton = false
+  }
   },
   created(){
     this.getApod()
@@ -81,10 +86,9 @@ export default {
 <style >
 .btn1{
   margin-top: 20rem;
-
 }
 .v-dialog {
- background: hsla(0, 0%, 0%, 0.877);
+ background: #000;
  width: 100%;
  border-radius: 20px;
 }

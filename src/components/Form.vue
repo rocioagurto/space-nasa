@@ -1,7 +1,7 @@
 <template>
 
    
-    <v-container class="text-center" >
+    <v-container class="text-center " >
       <v-card width="320"  class=" mx-auto" color="indigo darken-4"  v-model="alert.snackbar"  >
         {{ alert.message }}
    </v-card>
@@ -35,11 +35,11 @@
       >
       </v-text-field>
       
-    <v-container class=" mt-6">
+    <v-container class=" mt-6" >
       <v-btn
       color="indigo darken-4"
         :disabled="!valid"
-        class=" boton ml-8 mb-3 rounded-pill "
+        class=" boton  mb-3  "
         @click="login"
         >
         INGRESAR AQUÍ
