@@ -7,12 +7,12 @@
      
             id="btn1"
             @click="expand = !expand"
-             class=" ml-3 pa-6"
+             class=" ml-3 pa-6 "
              rounded
             
              
           >
-         <h3>Haz click aquí </h3> 
+         <h3 class="animate__animated animate__rubberBand animate__repeat-2">Haz click aquí </h3> 
           </v-btn>
   
          <v-expand-transition>
@@ -60,13 +60,22 @@ export default {
   margin-top: 10rem;
   background: rgb(0, 36, 156);
 }
-#btn1:hover{
-  height: 4%;
+#btn1:hover, #btn1:active #btn1:visited {
+  font-size: 1rem;
   transition: .8s;
   transition-duration: .5s;
   background: rgb(0, 0, 0);
 }
 
+.animate__animated.animate__rubberBand {
+  --animate-duration: 2s;
+}
+
+/* This changes all the animations globaly */
+:root {
+  --animate-duration: 800ms;
+  --animate-delay: 0.9s;
+}
 
 
 
