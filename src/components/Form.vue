@@ -1,8 +1,8 @@
 <template>
 
    
-    <v-container class="text-center " >
-      <v-snackbar  class="text-center mt-6" color="indigo darken-4 "  v-model="alert.snackbar" top vertical >
+    <v-container class="text-center mb-16" >
+      <v-snackbar  class="text-center mt-6" color="primary"  v-model="alert.snackbar" top >
         {{ alert.message }}
          <template v-slot:action="{ attrs }">
       <v-btn
@@ -48,7 +48,7 @@
     <v-container class=" mt-6" >
       <v-btn
       rounded
-      color="indigo darken-4"
+      color="primary"
         :disabled="!valid"
         class=" boton  mb-3  "
         @click="login"
@@ -114,7 +114,7 @@ export default {
           this.alert.message = `Bienvenid@, ${user}`
           setTimeout(() => {
             this.$router.push('/apod')
-          }, 1000)
+          }, 2000)
           
         })
         .catch(() => {
@@ -131,7 +131,7 @@ export default {
         this.alert.message = 'Debe completar todos los campos...'
         setTimeout(() => {
              this.alert.snackbar = false
-          }, 1000)
+          }, 2000)
         
 
       }

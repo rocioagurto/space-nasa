@@ -4,6 +4,8 @@
       <v-container>
         <v-row class="justify-center">
           <v-col cols="12" md="8" >
+            <h1 class=" font-weight-thin mt-16 text-center  animate__animated animate__slideInLeft animate__repeat-1">Fotografías de Marte</h1>
+            <h3 class=" font-weight-thin text-center  animate__animated animate__slideInRight animate__repeat-1">Filtre su búsqueda</h3>
             <v-form class="my-10 pa-3 text-center ">
               <v-text-field
                 v-model="sol"
@@ -20,7 +22,7 @@
                 required
               />
               <v-btn
-                color="indigo darken-4" 
+                color="primary" 
                 @click="getRoverInfo"
                 class=" mt-10 "
               >
@@ -47,7 +49,7 @@
             <v-card
             class="mx-auto pa-3 mb-3"
             max-width="450"
-            color="grey darken-3"
+            color="grey darken-4"
             >
             
               <v-img
@@ -117,6 +119,7 @@ export default {
 </script>
 
 <style >
+
 .titulo{
   background: hsla(0, 0%, 0%, 0.787);
 }

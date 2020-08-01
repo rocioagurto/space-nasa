@@ -3,7 +3,7 @@
     
     <v-main>
       <div>
-       <v-overlay :value="loading" color="indigo darken-4 " class="dark-blue--text" opacity="0.3">
+       <v-overlay :value="loading" color="primary" class="dark-blue--text" opacity="0.6">
      <v-progress-circular indeterminate size="94">Loading</v-progress-circular>
     </v-overlay>
           <router-view/>

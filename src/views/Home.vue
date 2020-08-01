@@ -1,20 +1,20 @@
 <template>
   <div class="text-center " >
     <v-img :src="apod.url" min-height=100vh >
-      
-       
+      <v-container>       
           <v-btn
-     
+           
             id="btn1"
+            fab dark large
             @click="expand = !expand"
-             class=" ml-3 pa-6 "
-             rounded
-            
-             
+            class=" animate__animated animate__zoomInUp animate__repeat-1"
+          
           >
-         <h3 class="animate__animated animate__rubberBand animate__repeat-2">Haz click aquí </h3> 
+          <img src="assets/img/cohete.png" alt="">
           </v-btn>
-  
+          
+         
+          </v-container>
          <v-expand-transition>
         <Form v-show="expand"/>
         </v-expand-transition>
@@ -57,24 +57,24 @@ export default {
 <style >
 #btn1{
   margin: 0 auto;
-  margin-top: 10rem;
-  background: rgb(0, 36, 156);
+  margin-top: 7rem;
+
 }
-#btn1:hover, #btn1:active #btn1:visited {
-  font-size: 1rem;
-  transition: .8s;
-  transition-duration: .5s;
-  background: rgb(0, 0, 0);
+#btn1:active #btn1::after {
+background: #000;
+
 }
 
-.animate__animated.animate__rubberBand {
-  --animate-duration: 2s;
+
+
+.animate__animated.animate__zoomInUp {
+  --animate-duration: 3s;
 }
 
 /* This changes all the animations globaly */
 :root {
   --animate-duration: 800ms;
-  --animate-delay: 0.9s;
+  --animate-delay: 0.4s;
 }
 
 

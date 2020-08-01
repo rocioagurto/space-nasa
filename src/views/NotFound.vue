@@ -6,7 +6,16 @@
          <p class="titulo  mt-16">404</p>
           <h2> Not found</h2>
       <p >The requested URL was not found on this server.</p>
-      <v-btn color="indigo darken-4"><router-link class="text-decoration-none white--text" to="/apod">Home</router-link></v-btn> 
+      <v-btn
+           
+            id="btn1"
+            fab dark large
+            @click="expand = !expand"
+            class=" mt-10 animate__animated animate__bounce animate__infinite"
+            to="/apod"
+          >
+          <img src="assets/img/cohete.png" alt="">
+          </v-btn>
       </v-col>
     </v-row>
     </v-img>
@@ -14,16 +23,19 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 export default {
-  data () {
-      return { 
-        dialog: false,
-      }
-    },
+ 
  
   computed:{
   ...mapState(['apod'])
+  },
+  methods: {
+  ...mapActions(['getApod']),
+ 
+  },
+  created(){
+    this.getApod()
   }
   
 
@@ -33,6 +45,15 @@ export default {
 <style  scoped>
 .titulo {
   font-size: 4rem;
-  
+}
+
+.animate__animated.animate__bounce {
+  --animate-duration: 2s;
+}
+
+/* This changes all the animations globaly */
+:root {
+  --animate-duration: 800ms;
+  --animate-delay: 0.2s;
 }
 </style>

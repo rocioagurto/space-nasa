@@ -1,10 +1,12 @@
 <template>
   <div>
     <v-app-bar
-      color="transparent"
-      light
+    
+      fixed="top"
+      id="navbar"
+  
     >
-      <router-link to="/apod" class="text-decoration-none grey--text text--darken-3 pa-5" > <v-toolbar-title id="title"  class="white--text">  <h3 class="d-inline-flex"> 🌌 </h3> {{ brand }}</v-toolbar-title></router-link>
+      <router-link to="/apod" class="text-decoration-none grey--text text--darken-3  d-inline-flex align-center" > <img class="mr-3" src="assets/img/c2.png" alt="">  <v-toolbar-title id="title"  class="white--text ">  {{ brand }}</v-toolbar-title></router-link>
       <v-spacer></v-spacer>
       <v-menu
         left
@@ -21,7 +23,7 @@
           </v-btn>
         </template>
 
-        <v-list  color="indigo darken-4"  >
+        <v-list id="navbar"  >
           <v-list-item link to="/apod" v-if="isLoggedIn">
             <v-list-item-title class="white--text">
               APOD
@@ -83,3 +85,9 @@ export default {
   }
 }
 </script>
+<style >
+#navbar {
+  background: #121212ec;
+}
+  
+</style>
