@@ -3,23 +3,18 @@
     <v-img :src="apod.url" min-height=100vh >
       <v-container>       
           <v-btn
-           
             id="btn1"
             fab dark large
             @click="expand = !expand"
             class=" animate__animated animate__zoomInUp animate__repeat-1"
-          
-          >
-          <img src="assets/img/cohete.png" alt="">
-          </v-btn>
-          
-         
+            >
+              <img src="assets/img/cohete.png" alt="">
+            </v-btn>
           </v-container>
-         <v-expand-transition>
-        <Form v-show="expand"/>
-        </v-expand-transition>
-   
-        </v-img>
+        <v-expand-transition>
+      <Form v-show="expand"/>
+    </v-expand-transition>
+   </v-img>
   </div>
 </template>
 

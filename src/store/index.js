@@ -32,9 +32,10 @@ export default new Vuex.Store({
     GET_ROVER(state, info){state.roverData = info}
   },
   actions: {
+    
     getApod({commit}, date = null){
-      commit('LOADING_ON')
       let queryDate = date ? date : new Date().toISOString().substr(0, 10)
+      commit('LOADING_ON')
       axios.get(`${APOD_ENDPOINT}&date=${queryDate}`)
       .then((response) => {
         commit('GET_APOD', response.data)
@@ -43,19 +44,25 @@ export default new Vuex.Store({
     .catch(()=>{
       let backup = {url: 'https://apod.nasa.gov/apod/image/2007/NEOWISEBelowBigDipper-7-16-2020-TomMasterson1081.jpg'}
       commit('GET_APOD',  backup)
+      commit('LOADING_OFF')
     })
   },
   getRoverData({commit},{sol, rover} ){
+    commit('LOADING_ON')
     axios.get(`${ROVER_ENDPOINT}/${rover}/photos?api_key=${KEY}&sol=${sol}&page=1`)
     .then((response)=>{
+      commit('LOADING_OFF')
       commit('GET_ROVER', response.data)
     })
   },
   updateUser({commit}, user){
+    commit('LOADING_ON')
       return new Promise((resolve, reject) => {
         try{ 
           commit('UPDATE_CURRENTUSER', user)
+          commit('LOADING_OFF')
           resolve(user)
+         
         } catch(e) { reject(e) }
       })
     },

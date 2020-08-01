@@ -3,8 +3,8 @@
     <nav-bar :brand="'SPACE-NASA'"/>
     <v-main  >
       <v-container class="text-center mt-16" >
-         <h1 class=" font-weight-thin mt-8 text-center animate__animated animate__lightSpeedInLeft animate__repeat-1" style="font-size: 36px">Fotografías por día</h1>
-            <h4 class=" font-weight-thin mb-8 text-center  animate__animated animate__lightSpeedInRight animate__repeat-1">Seleccione un día en el calendario</h4>
+          <h1 class=" font-weight-thin mt-8 text-center animate__animated animate__lightSpeedInLeft animate__repeat-1" style="font-size: 36px">Fotografías por día</h1>
+          <h4 class=" font-weight-thin mb-8 text-center  animate__animated animate__lightSpeedInRight animate__repeat-1">Seleccione un día en el calendario</h4>
         <v-row >
           <v-col cols="12" md="6" class="d-flex  justify-center d-md-block " >
             
@@ -34,6 +34,7 @@
         </v-row>
       </v-container>
     </v-main>
+    
   </div>
 </template>
 

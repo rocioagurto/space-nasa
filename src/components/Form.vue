@@ -1,7 +1,8 @@
 <template>
-
-   
     <v-container class="text-center mb-16" >
+       <v-overlay :value="loading" color="primary" class="dark-blue--text" opacity="0.6">
+     <v-progress-circular indeterminate size="94">Loading</v-progress-circular>
+    </v-overlay>
       <v-snackbar  class="text-center mt-6" color="primary"  v-model="alert.snackbar" top >
         {{ alert.message }}
          <template v-slot:action="{ attrs }">
@@ -73,6 +74,7 @@
 
 <script>
 import Firebase from 'firebase'
+import {mapState} from 'vuex'
 
 
 export default {
@@ -138,6 +140,7 @@ export default {
     }
   },
   computed: {
+     ...mapState(['loading']),
     
    
   }
