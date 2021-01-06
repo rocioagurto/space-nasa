@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "firebase": "^7.17.1",
     "magic.css": "^1.4.6",
